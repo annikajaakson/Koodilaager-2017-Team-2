@@ -42,6 +42,7 @@ class Game:
 
     def update(self):
         self.all_sprites.update()
+        self.player.move()
 
     def draw_grid(self):
         for x in range(0,WIDTH,TILESIZE):
@@ -75,16 +76,7 @@ class Game:
             if event.type == pg.QUIT:
                 self.quit()
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
-                if event.key == pg.K_LEFT:
-                    self.player.move(dx=-1)
-                if event.key == pg.K_RIGHT:
-                    self.player.move(dx=1)
-                if event.key == pg.K_UP:
-                    self.player.move(dy=-1)
-                if event.key == pg.K_DOWN:
-                    self.player.move(dy=1)
+                pass
 
 g = Game()
 

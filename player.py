@@ -13,9 +13,11 @@ class Player(pg.sprite.Sprite):
         self.x = x
         self.y = y
 
-    def move(self, dx=0, dy=0):
-        self.x += dx
-        self.y += dy
+    def move(self):
+        key = pg.key.get_pressed()
+
+        self.y += MOVE * key[pg.K_DOWN] - MOVE * key[pg.K_UP]
+        self.x += MOVE * key[pg.K_RIGHT] - MOVE * key[pg.K_LEFT]
 
     def update(self):
         self.rect.x = self.x
