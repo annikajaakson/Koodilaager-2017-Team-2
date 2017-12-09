@@ -19,7 +19,7 @@ class Game:
         pass
 
     def new(self):
-        self.allsprites = pg.sprite.Group()
+        self.all_sprites = pg.sprite.Group()
         self.player = Player(self,10,10)
 
     def run(self):
@@ -46,12 +46,13 @@ class Game:
             pg.draw.line(self.screen,LIGHTGREY,(0,y),(WIDTH,y))
 
     def draw(self):
-        self.screen_fill(BGCOLOR)
+        self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
-        self.map = Map.map_data
+        self.map = Map()
+        data = self.map.map_data
 
-        for i in self.map:
+        for i in data:
             for a in i:
                 if a == 0:
                     self.image = pg.Surface((TILESIZE, TILESIZE))
