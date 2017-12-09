@@ -1,12 +1,20 @@
-map_height = 20
-map_width = 30
+from settings import*
+GRIDWIDTH = 20
+GRIDHEIGHT = 30
 
 map_data = []
 
-for i in range(map_height):
-    map_data.append([])
+class Map:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.speed = 0
+        self.map_data = []
+    def map(self):
+        for i in range(GRIDHEIGHT):
+            self.map_data.append([])
 
-    for j in range(map_width):
-        map_data[i].append(0)
-
+            for j in range(GRIDWIDTH):
+                self.map_data[i].append(0)
+                
 print(map_data)
