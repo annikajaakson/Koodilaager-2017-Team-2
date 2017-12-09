@@ -18,6 +18,8 @@ class opilane:
         self.speed = random.randrange(2, 3) #cell speed
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
+        self.lifetime = 5000
+
 
 
 
@@ -28,7 +30,7 @@ class opilane:
 
     def opilanekill (self, bullet):
         if bullet.x == self.x and bullet.y == self.y:
-            self.kill()
+            self.lifetime = 0
 
     def jookseb(self, player):
         if player.x > self.x:
