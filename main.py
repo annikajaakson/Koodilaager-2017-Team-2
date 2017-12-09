@@ -45,7 +45,7 @@ class Game:
         for y in range(0,HEIGHT,TILESIZE):
             pg.draw.line(self.screen,LIGHTGREY,(0,y),(WIDTH,y))
 
-   def draw(self):
+    def draw(self):
         self.screen_fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
