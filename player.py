@@ -1,34 +1,22 @@
 import pygame as pg
+from settings import *
 
 
+class Player(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites
+        pg.sprite.Sprite.__init__(self, self.group)
+        self.game = game
+        self.image = pg.Surface((TILESIZE, TILESIZE))
+        self.image.fill(YELLOW)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
 
-
-
-class Player:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.x = 0
-        self.y = 0
+    def move(self, dx=0, dy=0):
+        self.x += dx
+        self.y += dy
 
     def update(self):
-        keys = pg.key.get_passed()
-        if keys[pg.K_UP]:
-            self.y = -5
-        if keys[pg.K_RIGHT]:
-            self.x = +5
-        if keys[pg.K_DOWN]:
-            self.y = +5
-        if keys[pg.K_LEFT]:
-            self.x = -5
-
-        self.rect.x += self.x
-        self.rect.y += self.y
-
-
-
-
-class Bullet:
-    def __init__(self):
-        self.image = pg.Surface((12, 20))
-        self.speed = 10
+        self.rect.x = self.x * TILESIZE
+        self.rect.y = self.y * TILESIZE
