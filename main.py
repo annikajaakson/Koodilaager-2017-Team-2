@@ -67,6 +67,7 @@ class Game:
 
         for i in self.opilased: #update all cells
             i.wander()
+            i.jookseb(self.player)
             i.draw()
 
         pg.display.flip()
