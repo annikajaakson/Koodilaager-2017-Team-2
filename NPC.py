@@ -20,8 +20,11 @@ class opilane:
         self.direction = None #movement direction
         self.lifetime = 5000
 
-
-
+    def life(self):
+        if self.lifetime > 0:
+            return True
+        if self.lifetime == 0:
+            return False
 
 
     def draw(self):

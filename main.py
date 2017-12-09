@@ -80,6 +80,7 @@ class Game:
                 pass
 
 g = Game()
+
 while True:
     g.new()
     g.run()
