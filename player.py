@@ -67,4 +67,3 @@ class Player(pg.sprite.Sprite):
             self.counter = 15
         rotated = pg.transform.rotate(PLAYERANIMATION[self.playernumber],self.suund)
         screen.blit(rotated, (self.x, self.y))
-

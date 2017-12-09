@@ -1,12 +1,14 @@
 import sys
 import random
 import pygame
+from player import *
+from bullet import *
 from pygame.locals import *
 from settings import *
 pygame.init()
 
 
-ohvreidKokku = 10
+ohvreidKokku = 400
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 class opilane:
@@ -16,11 +18,29 @@ class opilane:
         self.speed = random.randrange(2, 3) #cell speed
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
-        self.rect = pygame.Rect([self.x, self.y, TILESIZE, TILESIZE])
+        self.lifetime = 5000
+
+
+
+
 
     def draw(self):
         pygame.draw.rect(screen, (255, 255, 255), self.rect) #draw the cell
 
+
+    def opilanekill (self, bullet):
+        if bullet.x == self.x and bullet.y == self.y:
+            self.lifetime = 0
+
+    def jookseb(self, player):
+        if player.x > self.x:
+            self.x -= 1
+        elif player.x < self.x:
+            self.x += 1
+        if player.y > self.y:
+            self.y -= 1
+        elif player.y < self.y:
+            self.y += 1
 
     def wander(self):
         directions = {"S":((-1,2),(1,self.speed)),"SW":((-self.speed,-1),(1,self.speed)),"W":((-self.speed,-1),(-1,2)),"NW":((-self.speed,-1),(-self.speed,-1)),"N":((-1,2),(-self.speed,-1)),"NE":((1,self.speed),(-self.speed,-1)),"E":((1,self.speed),(-1,2)),"SE":((1,self.speed),(1,self.speed))} #((min x, max x)(min y, max y))
