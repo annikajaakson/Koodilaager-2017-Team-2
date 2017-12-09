@@ -3,6 +3,7 @@ import sys
 from player import *
 from map import *
 from NPC import *
+from settings import *
 
 class Game:
 
@@ -65,13 +66,13 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
-                if event.key = pg.K_LEFT:
+                if event.key == pg.K_LEFT:
                     self.player.move(dx=-1)
-                if event.key = pg.K_RIGHT:
+                if event.key == pg.K_RIGHT:
                     self.player.move(dx=1)
-                if event.key = pg.K_UP:
+                if event.key == pg.K_UP:
                     self.player.move(dy=-1)
-                if event.key = pg.K_DOWN:
+                if event.key == pg.K_DOWN:
                     self.player.move(dy=1)
 
 g = Game()
