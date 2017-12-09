@@ -14,6 +14,7 @@ class Game:
         self.clock = pg.time.Clock()
         pg.key.set_repeat(500, 100)
         self.load_data()
+        self.opilased = []
 
     def load_data(self):
         pass
@@ -24,6 +25,10 @@ class Game:
 
     def run(self):
         self.playing = True
+
+        for i in range(ohvreidKokku):  # generate n cells
+            Opilane = opilane()
+            self.opilased.append(Opilane)
 
         while self.playing:
             self.dt = self.clock.tick(FPS)/1000
@@ -48,9 +53,9 @@ class Game:
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.draw_grid()
-        self.all_sprites.draw(self.screen)
         self.map = Map()
         data = self.map.map_data
+        self.all_sprites.draw(self.screen)
 
         for i in data:
             for a in i:
@@ -58,6 +63,11 @@ class Game:
                     self.image = pg.Surface((TILESIZE, TILESIZE))
                     self.image.fill(BLACK)
                     self.rect = self.image.get_rect()
+
+        for i in self.opilased: #update all cells
+            i.wander()
+            i.draw()
+
         pg.display.flip()
 
     def events(self):

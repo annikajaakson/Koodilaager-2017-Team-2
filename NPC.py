@@ -43,7 +43,6 @@ class opilane:
 
 
         if self.x < 5 or self.x > WIDTH - 5 or self.y < 5 or self.y > HEIGHT - 5: #if cell is near the border of the screen, change direction
-            print("oioi")
             if self.x < 5:
                 self.direction = "E"
             elif self.x > WIDTH - 5:
@@ -60,27 +59,3 @@ class opilane:
             self.y += self.move[1]
 
         self.rect = pygame.Rect([self.x, self.y, 40, 40])
-
-
-
-opilased = []
-for i in range(ohvreidKokku): #generate n cells
-    Opilane = opilane()
-    opilased.append(Opilane)
-
-
-
-def mainloop():
-    while True:
-        for event in pygame.event.get():
-            if event.type== QUIT: #if pressing the X, quit the program
-                pygame.quit() #stop pygame
-                sys.exit() #stop the program
-        screen.fill((0,0,0)) #clear the screen;
-        for i in opilased: #update all cells
-            i.wander()
-            i.draw()
-        pygame.display.update() #update display
-        pygame.time.Clock().tick(FPS) #limit FPS
-
-mainloop()
