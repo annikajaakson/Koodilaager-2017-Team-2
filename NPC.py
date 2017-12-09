@@ -35,14 +35,18 @@ class opilane:
         if bullet.x == self.x and bullet.y == self.y:
             self.lifetime = 0
 
+
     def jookseb(self, player):
-        if player.x > self.x:
+        distance_x = self.x - player.x *2
+        distance_y = self.y - player.y *2
+
+        if distance_x < 0:
             self.x -= 1
-        elif player.x < self.x:
+        elif distance_x > 0:
             self.x += 1
-        if player.y > self.y:
+        if distance_y < 0:
             self.y -= 1
-        elif player.y < self.y:
+        elif distance_y > 0:
             self.y += 1
 
     def wander(self):
