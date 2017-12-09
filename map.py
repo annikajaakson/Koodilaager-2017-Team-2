@@ -16,5 +16,5 @@ class Map:
 
             for j in range(GRIDWIDTH):
                 self.map_data[i].append(0)
-                
+
 print(map_data)
