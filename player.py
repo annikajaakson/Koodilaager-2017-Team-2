@@ -22,3 +22,6 @@ class Player(pg.sprite.Sprite):
     def update(self):
         self.rect.x = self.x
         self.rect.y = self.y
+
+
+
