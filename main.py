@@ -56,7 +56,7 @@ class Game:
         self.draw_grid()
         self.map = Map()
         data = self.map.map_data
-        self.all_sprites.draw(self.screen)
+       # self.all_sprites.draw(self.screen)
 
         for i in data:
             for a in i:
@@ -68,7 +68,7 @@ class Game:
         for i in self.opilased: #update all cells
             i.wander()
             i.draw()
-
+        self.player.draw(screen)
         pg.display.flip()
 
     def events(self):
