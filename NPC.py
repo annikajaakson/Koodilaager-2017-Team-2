@@ -9,7 +9,7 @@ pygame.init()
 ohvreidKokku = 10
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
-class opilane: 
+class opilane:
     def __init__(self):
         self.x = random.randrange(10, WIDTH-10) #x position
         self.y = random.randrange(10, HEIGHT-10) #y position
@@ -40,9 +40,7 @@ class opilane:
                                             directions[self.direction][0][1]) + smallOffset
             self.move[1] = random.randrange(directions[self.direction][1][0],
                                             directions[self.direction][1][1]) + smallOffset
-        for opilane2 in opilased:
-            if self.rect.colliderect(opilane2.rect):
-                print ("okou")
+
 
         if self.x < 5 or self.x > WIDTH - 5 or self.y < 5 or self.y > HEIGHT - 5: #if cell is near the border of the screen, change direction
             print("oioi")
