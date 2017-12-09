@@ -37,15 +37,15 @@ class Player(pg.sprite.Sprite):
         if hor == MOVE:
             self.suund = 90
             if ver == MOVE:
-                self.suund = 0
+                self.suund = 45
             elif ver == -MOVE:
-                self.suund = 0
+                self.suund = 135
         if hor == -MOVE:
             self.suund = 270
             if ver == MOVE:
-                self.suund = 0
+                self.suund = 315
             elif ver == -MOVE:
-                self.suund = 0
+                self.suund = 225
         if abs(ver)+abs(hor) == MOVE*2:
             self.y += ver/sqrt(2)
             self.x += hor/sqrt(2)

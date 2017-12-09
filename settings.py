@@ -13,7 +13,7 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
 FPS = 60
-MOVE = 1
+MOVE = 5
 TITLE = "Koolitulistamine"
 BGCOLOR = BLACK
 
