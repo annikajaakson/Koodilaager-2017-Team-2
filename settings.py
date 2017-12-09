@@ -14,6 +14,7 @@ YELLOW = (255, 255, 0)
 
 FPS = 60
 MOVE = 5
+PLAYERMOVE = 5
 TITLE = "Koolitulistamine"
 BGCOLOR = BLACK
 

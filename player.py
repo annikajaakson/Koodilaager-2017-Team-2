@@ -13,7 +13,7 @@ class Player(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-        self.counter = 15
+        self.counter = PLAYERMOVE
         self.playernumber = 0
         self.suund = 0
 
@@ -22,6 +22,7 @@ class Player(pg.sprite.Sprite):
 
         ver = MOVE * key[pg.K_DOWN] - MOVE * key[pg.K_UP]
         hor = MOVE * key[pg.K_RIGHT] - MOVE * key[pg.K_LEFT]
+        self.a = 1
         if ver == MOVE:
             self.suund = 0
             if hor == MOVE:
@@ -52,7 +53,8 @@ class Player(pg.sprite.Sprite):
         else:
             self.y += ver
             self.x += hor
-
+        if ver == 0 and hor == 0:#et kohapeal jalad ei liiguks
+            self.a = 0
 
     def update(self):
         self.rect.x = self.x
@@ -64,6 +66,23 @@ class Player(pg.sprite.Sprite):
             self.playernumber += 1
             if self.playernumber == 8:
                 self.playernumber = 0
-            self.counter = 15
-        rotated = pg.transform.rotate(PLAYERANIMATION[self.playernumber],self.suund)
-        screen.blit(rotated, (self.x, self.y))
+            self.counter = PLAYERMOVE
+
+        if self.x > 1920-96+8:
+            self.x = 1920-96+8
+        if self.x < 0-8:
+            self.x = 0-8
+        if self.y > 1080-96+8:
+            self.y = 1080-96+8
+        if self.y < 0-8:
+            self.y = 0-8
+
+        if self.a == 0:
+            image = PLAYERANIMATION[0]
+        else:
+            image = PLAYERANIMATION[self.playernumber]
+        img_rect = image.get_rect()
+        rot_image = pg.transform.rotate(image,self.suund)
+        rot_im_rect = rot_image.get_rect()
+        rot_im_rect.center = img_rect.center
+        screen.blit(rot_image,(rot_im_rect[0]+self.x,rot_im_rect[1]+self.y))
