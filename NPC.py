@@ -18,7 +18,8 @@ class opilane:
         self.speed = random.randrange(2, 3) #cell speed
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
-        self.rect = pygame.Rect([self.x, self.y, TILESIZE, TILESIZE])
+
+
 
 
     def draw(self):
