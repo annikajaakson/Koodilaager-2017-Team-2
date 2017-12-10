@@ -3,7 +3,6 @@ import pygame as pg
 user32 = ctypes.windll.user32
 WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
-
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)

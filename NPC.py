@@ -7,7 +7,7 @@ from pygame.locals import *
 from settings import *
 pygame.init()
 
-ohvreidKokku = 1
+ohvreidKokku = 90
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 

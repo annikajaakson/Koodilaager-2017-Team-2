@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         pg.init()
         self.FONT = pg.font.SysFont("monospace", 100)
-        self.screen = pg.display.set_mode((0,0),FULLSCREEN)
+        self.screen = pg.display.set_mode((0,0), FULLSCREEN)
         self.window = (1920,1080)
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
@@ -83,12 +83,13 @@ class Game:
         #self.all_sprites.draw(self.screen)
 
 
-
-
         for i in self.opilased: #update all cells
-            i.wander()
-            i.jookseb(self.player)
-            i.draw(self.screen)
+            if i.alive: # lisatud
+                i.wander()
+                i.jookseb(self.player)
+                i.get_killed(self.bullets) # lisatud
+                i.draw(self.screen)
+
         self.screen.blit(self.FONT.render("fps: " + str(round(self.clock.get_fps())), 1, WHITE), (100, 100))
         self.player.draw(self.screen)
         for bullet in self.bullets:
