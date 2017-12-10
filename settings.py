@@ -1,7 +1,8 @@
 import ctypes
 import pygame as pg
-user32 = ctypes.windll.user32
-WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+# user32 = ctypes.windll.user32
+# WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+WIDTH, HEIGHT = 900, 600
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -34,3 +35,5 @@ MAPTILES = []
 maptilesraw = ["floor.png","floor2.png","wall.png","sofa.png"]
 for a in range(4):
     MAPTILES.append(pg.transform.scale(pg.image.load(maptilesraw[a]), (TILESIZE, TILESIZE)))
+
+blood_img = pg.image.load("veri4.png")

@@ -22,9 +22,12 @@ class Bullet:
         if opilane.x == self.x and opilane.y == self.y:
             self.bullet_lifetime = 0
 
-    def update(self):
+    def update(self, bulletlist):
         self.x += self.speed * math.cos(self.suund*math.pi/180)
         self.y -= self.speed * math.sin(self.suund*math.pi/180)
+
+        if self.x < 0 or self.x > WIDTH or self.y < 0 or self.y > HEIGHT:
+            bulletlist.remove(self)
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, [self.x, self.y, 10, 10])
