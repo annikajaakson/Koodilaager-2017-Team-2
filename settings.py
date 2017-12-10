@@ -6,7 +6,6 @@ root.withdraw()
 
 WIDTH, HEIGHT = root.winfo_screenwidth(), root.winfo_screenheight()
 
-
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
@@ -15,7 +14,7 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
-FPS = 60
+FPS = 1000
 MOVE = 5
 PLAYERMOVE = 5
 TITLE = "Koolitulistamine"
