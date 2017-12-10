@@ -21,11 +21,17 @@ BGCOLOR = BLACK
 
 TILEAMOUNTY = 32
 TILESIZE = int(round(HEIGHT/TILEAMOUNTY))
-GRIDWIDTH = WIDTH / TILESIZE
-GRIDHEIGHT = HEIGHT / TILESIZE
+GRIDWIDTH = int(round(WIDTH / TILESIZE))
+GRIDHEIGHT = int(round(HEIGHT / TILESIZE))
+
 
 
 PLAYERANIMATION = []
 playeranimationraw = ["player0.png","player1.png","player2.png","player3.png","player4.png","player5.png","player6.png","player7.png"]
 for i in range(8):
     PLAYERANIMATION.append(pg.transform.scale(pg.image.load(playeranimationraw[i]), (96, 96)))
+
+MAPTILES = []
+maptilesraw = ["floor.png","floor2.png","wall.png","sofa.png"]
+for a in range(4):
+    MAPTILES.append(pg.transform.scale(pg.image.load(maptilesraw[a]), (TILESIZE, TILESIZE)))

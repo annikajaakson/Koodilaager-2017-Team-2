@@ -9,12 +9,35 @@ class Game:
 
     def __init__(self):
         pg.init()
+        self.FONT = pg.font.SysFont("monospace", 100)
         self.screen = pg.display.set_mode((0,0),FULLSCREEN)
+        self.window = (1920,1080)
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         pg.key.set_repeat(1,1)
         self.load_data()
         self.opilased = []
+        self.bullets = []
+
+        map = Map()
+        data = map.map()
+        def joonista():
+            for i in range(len(data)):
+                for a in range(len(data[i])):
+                    """
+                    self.image = pg.Surface((TILESIZE, TILESIZE))
+                    if data[i][a] == 0:
+                        self.image.fill(GREEN)
+                    elif data[i][a] == 1:
+                        self.image.fill(YELLOW)
+
+                    screen.blit(self.image,(TILESIZE*a,TILESIZE*i))
+                    """
+                    self.background.blit(MAPTILES[data[i][a]], (TILESIZE*a, TILESIZE*i))
+
+        self.background = pg.Surface(self.window)
+        joonista()
+
 
     def load_data(self):
         pass
@@ -42,7 +65,9 @@ class Game:
 
     def update(self):
         self.all_sprites.update()
-        self.player.move()
+        self.player.move(self.bullets)
+        for bullet in self.bullets:
+            bullet.update()
 
     def draw_grid(self):
         for x in range(0,WIDTH,TILESIZE):
@@ -52,24 +77,22 @@ class Game:
             pg.draw.line(self.screen,LIGHTGREY,(0,y),(WIDTH,y))
 
     def draw(self):
-        self.screen.fill(BGCOLOR)
-        self.draw_grid()
-        self.map = Map()
-        data = self.map.map_data
-       # self.all_sprites.draw(self.screen)
+        self.screen.blit(self.background,(0,0))
+        #self.draw_grid()
 
-        for i in data:
-            for a in i:
-                if a == 0:
-                    self.image = pg.Surface((TILESIZE, TILESIZE))
-                    self.image.fill(BLACK)
-                    self.rect = self.image.get_rect()
+        #self.all_sprites.draw(self.screen)
+
+
+
 
         for i in self.opilased: #update all cells
             i.wander()
             i.jookseb(self.player)
-            i.draw()
-        self.player.draw(screen)
+            i.draw(self.screen)
+        self.screen.blit(self.FONT.render("fps: " + str(round(self.clock.get_fps())), 1, WHITE), (100, 100))
+        self.player.draw(self.screen)
+        for bullet in self.bullets:
+            bullet.draw(self.screen)
         pg.display.flip()
 
     def events(self):
@@ -78,6 +101,9 @@ class Game:
                 self.quit()
             if event.type == pg.KEYDOWN:
                 pass
+
+
+
 
 g = Game()
 

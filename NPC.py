@@ -8,8 +8,8 @@ from settings import *
 pygame.init()
 
 
-ohvreidKokku = 400
-screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
+ohvreidKokku = 10
+#screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 class opilane:
     def __init__(self):
@@ -27,7 +27,7 @@ class opilane:
             return False
 
 
-    def draw(self):
+    def draw(self,screen):
         pygame.draw.rect(screen, (255, 255, 255), self.rect) #draw the cell
 
 

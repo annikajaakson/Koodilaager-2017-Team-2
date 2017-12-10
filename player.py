@@ -1,6 +1,7 @@
 import pygame as pg
 from settings import *
 from math import *
+from bullet import *
 
 
 class Player(pg.sprite.Sprite):
@@ -17,36 +18,36 @@ class Player(pg.sprite.Sprite):
         self.playernumber = 0
         self.suund = 0
 
-    def move(self):
+    def move(self, bulletlist):
         key = pg.key.get_pressed()
+
+        if key[pg.K_SPACE]:
+            if self.cooldown == 0:
+                bulletlist.append(Bullet(self.x, self.y, self.suund))
+                self.cooldown += 1
+        elif key[pg.K_SPACE] == 0:
+            self.cooldown = 0
 
         ver = MOVE * key[pg.K_DOWN] - MOVE * key[pg.K_UP]
         hor = MOVE * key[pg.K_RIGHT] - MOVE * key[pg.K_LEFT]
         self.a = 1
-        if ver == MOVE:
-            self.suund = 0
-            if hor == MOVE:
-                self.suund = 0
-            elif hor == -MOVE:
-                self.suund = 0
-        if ver == -MOVE:
-            self.suund = 180
-            if hor == MOVE:
-                self.suund = 0
-            elif hor == -MOVE:
-                self.suund = 0
         if hor == MOVE:
             self.suund = 90
             if ver == MOVE:
                 self.suund = 45
             elif ver == -MOVE:
                 self.suund = 135
-        if hor == -MOVE:
+        elif hor == -MOVE:
             self.suund = 270
             if ver == MOVE:
                 self.suund = 315
             elif ver == -MOVE:
                 self.suund = 225
+        else:
+            if ver == MOVE:
+                self.suund = 0
+            elif ver == -MOVE:
+                self.suund = 180
         if abs(ver)+abs(hor) == MOVE*2:
             self.y += ver/sqrt(2)
             self.x += hor/sqrt(2)
