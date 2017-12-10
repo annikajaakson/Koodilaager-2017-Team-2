@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         pg.init()
         self.FONT = pg.font.SysFont("monospace", 100)
-        self.screen = pg.display.set_mode((0,0))
+        self.screen = pg.display.set_mode((0,0), FULLSCREEN)
         self.window = (1920,1080)
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
