@@ -15,10 +15,12 @@ class opilane:
     def __init__(self):
         self.x = random.randrange(10, WIDTH-10) #x position
         self.y = random.randrange(10, HEIGHT-10) #y position
+        self.rect = pygame.Rect([self.x, self.y, TILESIZE * 2, TILESIZE * 2]) #NPC rectangle
         self.speed = random.randrange(2, 3) #cell speed
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
         self.lifetime = 5000
+        self.alive = True
 
     def life(self):
         if self.lifetime > 0:
@@ -26,15 +28,17 @@ class opilane:
         if self.lifetime == 0:
             return False
 
-
     def draw(self,screen):
         pygame.draw.rect(screen, (255, 255, 255), self.rect) #draw the cell
-
 
     def opilanekill (self, bullet):
         if bullet.x == self.x and bullet.y == self.y:
             self.lifetime = 0
 
+    def get_killed(self, bullets):
+        for bullet in bullets:
+            if self.rect.colliderect(pygame.Rect([bullet.x, bullet.y, 3, 3])):
+                self.alive = False
 
     def jookseb(self, player):
         if self.x < player.x -100:
