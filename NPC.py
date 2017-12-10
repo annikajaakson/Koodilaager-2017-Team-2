@@ -7,7 +7,8 @@ from pygame.locals import *
 from settings import *
 pygame.init()
 
-ohvreidKokku = 90
+ohvreidKokku = 500
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 
@@ -15,12 +16,16 @@ class opilane:
     def __init__(self):
         self.x = random.randrange(10, WIDTH-10) #x position
         self.y = random.randrange(10, HEIGHT-10) #y position
+
+        self.speed = random.randrange(2, 10) #cell speed
         self.rect = pygame.Rect([self.x, self.y, TILESIZE * 2, TILESIZE * 2]) #NPC rectangle
-        self.speed = random.randrange(2, 3) #cell speed
+
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
         self.lifetime = 5000
         self.alive = True
+        self.counter = PLAYERMOVE
+        self.playernumber = 0
 
     def life(self):
         if self.lifetime > 0:
@@ -29,7 +34,20 @@ class opilane:
             return False
 
     def draw(self,screen):
-        pygame.draw.rect(screen, (255, 255, 255), self.rect) #draw the cell
+        self.counter -= 1
+        if self.counter == 0:
+            self.playernumber += 1
+            if self.playernumber == 8:
+                self.playernumber = 0
+            self.counter = PLAYERMOVE
+
+        image = STUDENTANIMATION[self.playernumber]
+        img_rect = image.get_rect()
+        rot_image = pg.transform.rotate(image, 0)
+        rot_im_rect = rot_image.get_rect()
+        rot_im_rect.center = img_rect.center
+        screen.blit(rot_image, (rot_im_rect[0] + self.x, rot_im_rect[1] + self.y))
+        #pygame.draw.rect(screen, (255, 255, 255), self.rect) #draw the cell
 
     def opilanekill (self, bullet):
         if bullet.x == self.x and bullet.y == self.y:

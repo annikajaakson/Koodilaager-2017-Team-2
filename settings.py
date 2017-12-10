@@ -1,7 +1,10 @@
-import ctypes
 import pygame as pg
-user32 = ctypes.windll.user32
-WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+import tkinter #python 3 syntax
+
+root = tkinter.Tk()
+root.withdraw()
+
+WIDTH, HEIGHT = root.winfo_screenwidth(), root.winfo_screenheight()
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -11,7 +14,7 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
-FPS = 60
+FPS = 1000
 MOVE = 5
 PLAYERMOVE = 5
 TITLE = "Koolitulistamine"
@@ -36,3 +39,8 @@ for a in range(4):
     MAPTILES.append(pg.transform.scale(pg.image.load(maptilesraw[a]), (TILESIZE, TILESIZE)))
 
 blood_img = pg.image.load("veri4.png")
+
+STUDENTANIMATION = []
+studentanimationraw = ["man0.png","man1.png","man2.png","man3.png","man4.png","man5.png","man6.png","man7.png"]
+for s in range(8):
+    STUDENTANIMATION.append(pg.transform.scale(pg.image.load(studentanimationraw[s]), (96,96)))
