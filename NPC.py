@@ -7,9 +7,9 @@ from pygame.locals import *
 from settings import *
 pygame.init()
 
+ohvreidKokku = 100
+screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
-ohvreidKokku = 10
-#screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 class opilane:
     def __init__(self):
@@ -37,22 +37,19 @@ class opilane:
 
 
     def jookseb(self, player):
-        distance_x = self.x - player.x *2
-        distance_y = self.y - player.y *2
-
-        if distance_x < 0:
+        if self.x < player.x -100:
             self.x -= 1
-        elif distance_x > 0:
+        elif self.x > player.x +100:
             self.x += 1
-        if distance_y < 0:
+        if self.y < player.y -100:
             self.y -= 1
-        elif distance_y > 0:
+        elif self.y > player.y +100:
             self.y += 1
 
     def wander(self):
         directions = {"S":((-1,2),(1,self.speed)),"SW":((-self.speed,-1),(1,self.speed)),"W":((-self.speed,-1),(-1,2)),"NW":((-self.speed,-1),(-self.speed,-1)),"N":((-1,2),(-self.speed,-1)),"NE":((1,self.speed),(-self.speed,-1)),"E":((1,self.speed),(-1,2)),"SE":((1,self.speed),(1,self.speed))} #((min x, max x)(min y, max y))
         directionsName = ("S","SW","W","NW","N","NE","E","SE") #possible directions
-        if random.randrange(0,5) == 2: #move about once every 5 frames
+        if random.randrange(2,6) == 2: #move about once every 5 frames
             if self.direction == None: #if no direction is set, set a random one
                 self.direction = random.choice(directionsName)
             else:
@@ -85,4 +82,4 @@ class opilane:
             self.x += self.move[0]
             self.y += self.move[1]
 
-        self.rect = pygame.Rect([self.x, self.y, TILESIZE, TILESIZE])
+        self.rect = pygame.Rect([self.x, self.y, TILESIZE*2, TILESIZE*2])
