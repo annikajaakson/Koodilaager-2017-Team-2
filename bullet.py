@@ -9,8 +9,8 @@ class Bullet:
         self.bullet_speed = 500
         self.bullet_lifetime = 50
         #self.icon = pygame.image.load("bullet.png")
-        self.x = x
-        self.y = y
+        self.x = x+48
+        self.y = y+48
         #self.rect = pygame.Rect([self.x, self.y, 3, 3])
         self.suund = suund - 90
         if self.suund < 0:

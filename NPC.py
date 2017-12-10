@@ -7,7 +7,7 @@ from pygame.locals import *
 from settings import *
 pygame.init()
 
-ohvreidKokku = 1
+ohvreidKokku = 100
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) #set the game window
 
 
@@ -15,7 +15,7 @@ class opilane:
     def __init__(self):
         self.x = random.randrange(10, WIDTH-10) #x position
         self.y = random.randrange(10, HEIGHT-10) #y position
-        self.speed = random.randrange(2, 3) #cell speed
+        self.speed = random.randrange(2, 10) #cell speed
         self.move = [None, None] #realtive x and y coordinates to move to
         self.direction = None #movement direction
         self.lifetime = 5000

@@ -1,7 +1,10 @@
-import ctypes
 import pygame as pg
-user32 = ctypes.windll.user32
-WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+import tkinter #python 3 syntax
+
+root = tkinter.Tk()
+root.withdraw()
+
+WIDTH, HEIGHT = root.winfo_screenwidth(), root.winfo_screenheight()
 
 
 WHITE = (255, 255, 255)
