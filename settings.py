@@ -37,3 +37,8 @@ MAPTILES = []
 maptilesraw = ["floor.png","floor2.png","wall.png","sofa.png"]
 for a in range(4):
     MAPTILES.append(pg.transform.scale(pg.image.load(maptilesraw[a]), (TILESIZE, TILESIZE)))
+
+STUDENTANIMATION = []
+studentanimationraw = ["man0.png","man1.png","man2.png","man3.png","man4.png","man5.png","man6.png","man7.png"]
+for s in range(8):
+    STUDENTANIMATION.append(pg.transform.scale(pg.image.load(studentanimationraw[s]), (96,96)))
